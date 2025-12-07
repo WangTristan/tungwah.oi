@@ -1,0 +1,115 @@
+/* 设置全局样式 */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* 设置字体 */
+    line-height: 1.6; /* 设置行高 */
+    margin: 0; /* 移除默认边距 */
+    padding: 0;
+    background-color: #f4f7f9; /* 浅灰色背景 */
+    color: #333; /* 默认文本颜色 */
+}
+
+/* 容器：用于内容居中和设置最大宽度 */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto; /* 居中 */
+    overflow: hidden; /* 防止浮动元素溢出 */
+}
+
+/* 头部样式 */
+header {
+    background: #007bff; /* 东华蓝 */
+    color: #ffffff;
+    padding-top: 20px;
+    min-height: 70px;
+    border-bottom: #0056b3 3px solid;
+}
+
+header h1 {
+    float: left;
+    margin: 0;
+    font-size: 2em;
+}
+
+/* 导航栏样式 */
+header nav {
+    float: right;
+    margin-top: 10px;
+}
+
+header ul {
+    padding: 0;
+    list-style: none;
+}
+
+header li {
+    display: inline;
+    padding: 0 15px 0 15px;
+}
+
+header a {
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+header a:hover {
+    color: #ffd700; /* 悬停时变为金色 */
+}
+
+/* 主内容区 */
+main .container {
+    padding: 20px 0;
+}
+
+section {
+    padding: 20px;
+    margin-bottom: 20px;
+    background: #ffffff;
+    border-radius: 8px; /* 圆角边框 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 轻微阴影 */
+}
+
+section h2 {
+    color: #007bff;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 10px;
+}
+
+/* 快速入门和热门内容样式 */
+#welcome ul {
+    list-style: disc;
+    margin-left: 20px;
+    padding: 10px 0;
+}
+
+.hot-topics a {
+    display: inline-block;
+    background-color: #e9ecef;
+    color: #007bff;
+    padding: 8px 12px;
+    margin: 5px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.hot-topics a:hover {
+    background-color: #ced4da;
+}
+
+/* 页脚样式 */
+footer {
+    padding: 20px 0;
+    margin-top: 20px;
+    color: #ffffff;
+    background-color: #333; /* 深灰色背景 */
+    text-align: center;
+    font-size: 0.9em;
+}
+
+footer p {
+    margin: 5px 0;
+}
