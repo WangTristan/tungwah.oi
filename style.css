@@ -1,115 +1,272 @@
-/* 设置全局样式 */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* 设置字体 */
-    line-height: 1.6; /* 设置行高 */
-    margin: 0; /* 移除默认边距 */
-    padding: 0;
-    background-color: #f4f7f9; /* 浅灰色背景 */
-    color: #333; /* 默认文本颜色 */
+/* ==========================================================
+ * 1. 全局设置与主题变量
+ * ========================================================== */
+:root {
+    --oi-primary-color: #2173B9; /* 主题蓝：标题、强调、边框 */
+    --oi-accent-color: #ff8c00; /* 强调橙色：链接、次要突出 */
+    --oi-background: #fbfbfb; /* 页面背景色 */
+    --oi-content-bg: #ffffff; /* 内容区卡片背景色 */
+    --oi-border: #eaeaea; /* 细分隔线和边框颜色 */
+    --oi-text-main: #2c3e50; /* 主文本颜色 */
+    --oi-text-secondary: #7f8c8d; /* 次要文本颜色 */
+    --oi-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --content-max-width: 900px; /* 限制正文最大宽度，增强阅读舒适度 */
 }
 
-/* 容器：用于内容居中和设置最大宽度 */
+body {
+    font-family: var(--oi-font-family);
+    line-height: 1.7; /* 增大行高 */
+    margin: 0;
+    padding: 0;
+    background-color: var(--oi-background);
+    color: var(--oi-text-main);
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased; /* 字体平滑 */
+}
+
 .container {
     width: 90%;
-    max-width: 1200px;
-    margin: auto; /* 居中 */
-    overflow: hidden; /* 防止浮动元素溢出 */
+    max-width: 1400px;
+    margin: auto;
+    overflow: hidden;
 }
 
-/* 头部样式 */
+/* 链接样式 */
+a {
+    color: var(--oi-primary-color);
+    text-decoration: none;
+    transition: color 0.2s, border-bottom 0.2s;
+    border-bottom: 1px solid rgba(33, 115, 185, 0.2);
+    padding-bottom: 1px;
+}
+
+a:hover {
+    color: var(--oi-accent-color);
+    border-bottom: 1px solid var(--oi-accent-color);
+}
+
+/* ==========================================================
+ * 2. 头部和导航栏 (Header & Nav)
+ * ========================================================== */
 header {
-    background: #007bff; /* 东华蓝 */
-    color: #ffffff;
-    padding-top: 20px;
-    min-height: 70px;
-    border-bottom: #0056b3 3px solid;
+    background: var(--oi-content-bg);
+    border-bottom: 3px solid var(--oi-primary-color); /* 顶部蓝色强调条 */
+    padding: 10px 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 header h1 {
     float: left;
     margin: 0;
-    font-size: 2em;
+    font-size: 1.5em;
+    font-weight: 600;
+    color: var(--oi-primary-color);
 }
 
-/* 导航栏样式 */
 header nav {
     float: right;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 header ul {
     padding: 0;
     list-style: none;
+    margin: 0;
 }
 
 header li {
     display: inline;
-    padding: 0 15px 0 15px;
+    padding: 0 15px;
 }
 
-header a {
-    color: #ffffff;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 16px;
-    transition: color 0.3s;
+header nav a {
+    color: var(--oi-text-main);
+    font-weight: 500;
+    padding: 5px 0;
+    border-bottom: none; /* 移除导航栏链接的下划线 */
 }
 
-header a:hover {
-    color: #ffd700; /* 悬停时变为金色 */
+header nav a:hover {
+    color: var(--oi-primary-color);
 }
 
-/* 主内容区 */
-main .container {
-    padding: 20px 0;
+/* 清除浮动 */
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* ==========================================================
+ * 3. 主内容区布局与通用内容样式
+ * ========================================================== */
+main {
+    padding: 30px 0;
+}
+
+/* 内容区域包装器，实现两侧留白和背景色分离 */
+.content-wrapper {
+    max-width: var(--content-max-width); 
+    margin: 0 auto; 
+    background-color: var(--oi-content-bg);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.03);
 }
 
 section {
-    padding: 20px;
-    margin-bottom: 20px;
-    background: #ffffff;
-    border-radius: 8px; /* 圆角边框 */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 轻微阴影 */
+    padding: 0;
+    margin-bottom: 30px;
+    background: transparent;
 }
 
-section h2 {
-    color: #007bff;
-    border-bottom: 2px solid #e9ecef;
+p {
+    margin-bottom: 1.2em;
+}
+
+/* 强调文本 */
+strong {
+    color: var(--oi-primary-color); 
+    font-weight: 600;
+}
+
+/* ==========================================================
+ * 4. 标题和结构层次 (Markdown H1, H2, H3 渲染结果)
+ * ========================================================== */
+
+/* h1 页面主标题 */
+h1 {
+    font-size: 2.2em;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 15px;
     padding-bottom: 10px;
+    border-bottom: 3px solid var(--oi-primary-color);
 }
 
-/* 快速入门和热门内容样式 */
-#welcome ul {
-    list-style: disc;
-    margin-left: 20px;
-    padding: 10px 0;
+/* h2 主要章节标题 */
+section h2 {
+    color: var(--oi-primary-color);
+    border-bottom: 2px solid var(--oi-border);
+    padding-bottom: 8px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-size: 1.8em;
 }
 
-.hot-topics a {
-    display: inline-block;
-    background-color: #e9ecef;
-    color: #007bff;
-    padding: 8px 12px;
-    margin: 5px;
+/* h3 小节标题 */
+section h3 {
+    color: var(--oi-text-main);
+    border-left: 4px solid var(--oi-accent-color);
+    padding-left: 12px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 1.4em;
+}
+
+/* ==========================================================
+ * 5. 代码块、公式和引用 (Markdown 特有元素)
+ * ========================================================== */
+
+/* 行内代码 */
+code {
+    background-color: #f7f9fb;
+    border: 1px solid var(--oi-border);
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.9em;
+    color: #c7254e; /* 代码块文字颜色，使用深红突出 */
+}
+
+/* 代码块 (Prism.js 或 Marked.js 输出) */
+pre {
+    background-color: #f7f9fb; /* 浅灰色背景，更柔和 */
+    border: 1px solid var(--oi-border);
+    padding: 15px;
     border-radius: 4px;
-    text-decoration: none;
-    transition: background-color 0.3s;
+    overflow-x: auto;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.95em;
+    line-height: 1.4;
+    color: #444;
 }
 
-.hot-topics a:hover {
-    background-color: #ced4da;
+pre code {
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    color: inherit;
 }
 
-/* 页脚样式 */
+/* 引用块/提示框 (Markdown Blockquote) */
+blockquote {
+    border-left: 5px solid var(--oi-accent-color);
+    background: #fff8e6; 
+    padding: 10px 20px;
+    margin: 20px 0;
+    color: #a0522d; 
+    border-radius: 4px;
+}
+
+/* KaTeX 公式容器 */
+.katex-display {
+    margin: 1.5em 0;
+    padding: 15px;
+    background-color: var(--oi-background);
+    border-radius: 4px;
+    border: 1px dashed var(--oi-border);
+    text-align: center;
+}
+
+/* ==========================================================
+ * 6. 列表和表格
+ * ========================================================== */
+ul, ol {
+    margin-top: 10px;
+    padding-left: 25px;
+}
+
+ul li, ol li {
+    margin-bottom: 8px;
+    padding-left: 5px;
+}
+
+/* 表格样式 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 0.95em;
+}
+
+table th, table td {
+    border: 1px solid var(--oi-border);
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color: #f0f3f5;
+    color: var(--oi-text-main);
+    font-weight: 600;
+}
+
+table tr:nth-child(even) {
+    background-color: #fcfcfc;
+}
+
+/* ==========================================================
+ * 7. 页脚
+ * ========================================================== */
 footer {
     padding: 20px 0;
-    margin-top: 20px;
-    color: #ffffff;
-    background-color: #333; /* 深灰色背景 */
+    margin-top: 40px;
+    color: var(--oi-text-secondary);
+    background-color: var(--oi-content-bg);
+    border-top: 1px solid var(--oi-border);
     text-align: center;
-    font-size: 0.9em;
-}
-
-footer p {
-    margin: 5px 0;
+    font-size: 0.85em;
 }
