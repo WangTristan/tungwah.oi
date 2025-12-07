@@ -1,0 +1,23 @@
+name: Process Markdown with KaTeX
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  process-markdown:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - name: Install dependencies
+        run: pip install markdown-katex
+      - name: Convert markdown
+        run: |
+          python -m markdown_katex \
+            --input README.md \
+            --output docs/index.html \
+            --html
